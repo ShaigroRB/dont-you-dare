@@ -1,0 +1,17 @@
+{
+    "name": "Don't you dare!",
+    "version": "0.1.0",
+    "description": "Avoid accidentally closing tabs.",
+    "permissions": ["tabs"],
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "js/listeners.js"
+            ]
+        }
+    ],
+    "manifest_version": 2
+}
