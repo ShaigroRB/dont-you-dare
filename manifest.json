@@ -1,10 +1,12 @@
 {
     "name": "Don't you dare!",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "description": "Ask for confirmation to close tabs using Ctrl+W.",
     "permissions": [
         "storage",
-        "tabs"
+        "tabs",
+        "http://*/",
+        "https://*/"
     ],
     "background": {
         "scripts": [

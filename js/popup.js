@@ -1,13 +1,3 @@
-// changeColor.onclick = function (element) {
-//     let color = element.target.value;
-//     console.log("color: ", color);
-//     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-//         chrome.tabs.executeScript(
-//             tabs[0].id,
-//             { code: 'document.body.style.backgroundColor = "' + color + '";' });
-//     });
-// };
-
 const options = {
     WHITELIST: 'whitelist',
     BLACKLIST: 'blacklist',
@@ -40,6 +30,15 @@ const getStorage = (dataId, callback) => {
     chrome.storage.sync.get(dataId, callback);
 };
 
+const injectActivationState = (activationState) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        chrome.tabs.executeScript(
+            tabs[0].id,
+            { code: `isActivated = ${activationState};` }
+        );
+    });
+};
+
 const createElmOfList = (url, removeUrl) => {
     const div = document.createElement('div');
     div.className = 'item-list flex-row';
@@ -69,15 +68,19 @@ const isWhitelist = () => {
     |       1      |      1        |         1       |
 */
 const getActivationOnWebsite = () => {
-    return isActivatedOnPage = !(isWhitelist() ^ isUrlInList);
+    return !(isWhitelist() ^ isUrlInList);
 };
 
 const updatePopup = () => {
+    isActivatedOnPage = getActivationOnWebsite();
+    const globallyEnabled = isExtensionEnabled && isActivatedOnPage;
+    injectActivationState(globallyEnabled);
+
     btnChangePageStatus.innerHTML = isActivatedOnPage
         ? "&#x2714;"
         : "&#x26D4;";
 
-    if (isActivatedOnPage && isExtensionEnabled) {
+    if (globallyEnabled) {
         divPageStatus.innerHTML = "<p>Enabled on this page</p>";
         divPageStatus.classList.add('enabled');
     } else {
@@ -95,9 +98,9 @@ const updatePopup = () => {
     divLists.innerHTML = '';
     listOfPages.forEach(page => {
         divLists.appendChild(createElmOfList(page, (url) => {
-            isUrlInList = windowUrl === url;
+            isUrlInList = !(windowUrl === url);
             removeElementFromList(listOfPages, url);
-            if (optionSelected === options.WHITELIST) {
+            if (isWhitelist()) {
                 setStorage({ whitelist: listOfPages }, updatePopup);
             } else {
                 setStorage({ blacklist: listOfPages }, updatePopup);
@@ -122,7 +125,6 @@ const setOptionInPopup = (option) => {
         switch (option) {
             case options.EXT_DISABLED:
                 isExtensionEnabled = false;
-                isActivatedOnPage = false;
                 updatePopup();
                 break;
             case options.WHITELIST:
@@ -160,7 +162,6 @@ btnChangePageStatus.addEventListener('click', () => {
         listOfPages.push(windowUrl);
     }
     isUrlInList = !isUrlInList;
-    isActivatedOnPage = getActivationOnWebsite();
     switch (optionSelected) {
         case options.WHITELIST:
             setStorage({ whitelist: listOfPages }, updatePopup);

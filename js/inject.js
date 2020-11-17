@@ -1,8 +1,9 @@
 let isAnyCtrlPressed = false;
+let isActivated = false;
 
 const askForConsentBeforeClosingTab = (evt)  => {
     let confirmationMessage = "consent";
-    if (isAnyCtrlPressed) {
+    if (isActivated && isAnyCtrlPressed) {
         (evt || window.event).returnValue = confirmationMessage; //Gecko + IE
         return confirmationMessage;
     }
