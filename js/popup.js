@@ -45,7 +45,7 @@ const createElmOfList = (url, removeUrl) => {
     const p = document.createElement('p');
     p.innerText = url;
     const button = document.createElement('button');
-    button.innerHTML = '&times;';
+    button.innerHTML = '&#x274C;';
     button.addEventListener('click', () => {
         removeUrl(url);
     })
