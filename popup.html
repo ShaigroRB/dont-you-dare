@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <div id="div-main-content" class="flex-column">
+        <div id="div-title">
+            <h1>Don't you dare!</h1>
+        </div>
+        <div id="div-page-status">
+            <p>Activated on this page</p>
+        </div>
+        <div id="div-parameters" class="flex-row">
+            <div>
+                <button id="btn-change-page-status">Add to list</button>
+            </div>
+            <div id="div-lists-status" class="flex-column">
+                <div>
+                    <input type="radio" id="option-whitelist" name="lists" value="whitelist">
+                    <label for="whitelist">Whitelist</label>
+                </div>
+                <div>
+                    <input type="radio" id="option-blacklist" name="lists" value="blacklist">
+                    <label for="blacklist">Blacklist</label>
+                </div>
+                <div>
+                    <input type="radio" id="option-disabled" name="lists" value="disable-extension">
+                    <label for="disable-extension">Disabled</label>
+                </div>
+            </div>
+        </div>
+        <div id="div-lists" class="flex-column">
+            <div class="item-list flex-row">
+                <p>https://github.com</p>
+                <button>&times;</button>
+            </div>
+        </div>
+        <div id="div-credits">
+            <a target="_blank" href="https://github.com">Github</a>
+        </div>
+    </div>
+
+    <script src="js/popup.js"></script>
+</body>
+
+</html>

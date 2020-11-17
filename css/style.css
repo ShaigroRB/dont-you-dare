@@ -1,0 +1,77 @@
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+#div-main-content {
+    margin: 5px;
+    width: 200px;
+    align-content: space-between;
+}
+
+#div-main-content > div {
+    margin: 3px 0px;
+}
+
+#div-title {
+    text-align: center;
+}
+
+#div-title > h1 {
+    margin: 0px;
+}
+
+#div-page-status {
+    text-align: center;
+    color: rgb(161, 0, 0);
+    font-weight: bold;
+    font-size: medium;
+}
+
+#div-parameters {
+    align-content: space-between;
+}
+
+#div-parameters > div {
+    flex-grow: 1;
+}
+
+#btn-change-page-status {
+    width: 100%;
+    height: 100%;
+}
+
+#div-lists {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.item-list {
+    margin-bottom: 1px;
+}
+
+.item-list:hover {
+    background-color: rgb(233, 233, 233);
+}
+
+.item-list > p {
+    margin: 0px;
+    flex-grow: 3;
+}
+
+.item-list > button {
+    background-color: #ffffff;
+    color:rgb(255, 83, 83);
+    flex-grow: 1;
+    border: none;
+}
+
+.item-list > button:hover, .item-list > button:focus {
+    background-color: rgb(233, 233, 233);
+    color: rgb(255, 0, 0);
+}

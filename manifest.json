@@ -2,7 +2,9 @@
     "name": "Don't you dare!",
     "version": "0.1.0",
     "description": "Avoid accidentally closing tabs.",
-    "permissions": ["tabs"],
+    "browser_action": {
+        "default_popup": "popup.html"
+    },
     "content_scripts": [
         {
             "matches": [
