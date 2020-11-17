@@ -1,7 +1,7 @@
 {
     "name": "Don't you dare!",
     "version": "0.4.0",
-    "description": "Ask for confirmation to close tabs using Ctrl+W.",
+    "description": "Ask for confirmation to close tabs when using Ctrl+W.",
     "permissions": [
         "storage",
         "tabs",
@@ -21,7 +21,13 @@
             "32": "images/icon_32.png",
             "48": "images/icon_48.png",
             "128": "images/icon_128.png"
-          }
+        }
+    },
+    "icons": {
+        "16": "images/icon_16.png",
+        "32": "images/icon_32.png",
+        "48": "images/icon_48.png",
+        "128": "images/icon_128.png"
     },
     "content_scripts": [
         {
