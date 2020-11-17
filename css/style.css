@@ -28,9 +28,13 @@
 
 #div-page-status {
     text-align: center;
-    color: rgb(161, 0, 0);
+    color: rgb(231, 0, 0);
     font-weight: bold;
     font-size: medium;
+}
+
+#div-page-status.enabled {
+    color: rgb(0, 141, 0);
 }
 
 #div-parameters {
@@ -44,11 +48,22 @@
 #btn-change-page-status {
     width: 100%;
     height: 100%;
+    border-width: 1px;
+    background-color: rgb(233, 233, 233);
+}
+
+#btn-change-page-status:hover {
+    background-color: rgb(202, 202, 202);
 }
 
 #div-lists {
     max-height: 200px;
     overflow-y: auto;
+}
+
+#div-lists.disabled {
+    color: rgb(119, 119, 119);
+    pointer-events: none;
 }
 
 .item-list {
@@ -61,13 +76,13 @@
 
 .item-list > p {
     margin: 0px;
-    flex-grow: 3;
+    width: 100%;
 }
 
 .item-list > button {
     background-color: #ffffff;
     color:rgb(255, 83, 83);
-    flex-grow: 1;
+    width: 50px;
     border: none;
 }
 

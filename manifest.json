@@ -1,7 +1,17 @@
 {
     "name": "Don't you dare!",
-    "version": "0.1.0",
-    "description": "Avoid accidentally closing tabs.",
+    "version": "0.3.0",
+    "description": "Ask for confirmation to close tabs using Ctrl+W.",
+    "permissions": [
+        "storage",
+        "tabs"
+    ],
+    "background": {
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": false
+    },
     "browser_action": {
         "default_popup": "popup.html"
     },
@@ -11,7 +21,7 @@
                 "<all_urls>"
             ],
             "js": [
-                "js/listeners.js"
+                "js/inject.js"
             ]
         }
     ],
