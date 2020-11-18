@@ -98,7 +98,9 @@ const updatePopup = () => {
     divLists.innerHTML = '';
     listOfPages.forEach(page => {
         divLists.appendChild(createElmOfList(page, (url) => {
-            isUrlInList = !(windowUrl === url);
+            if (windowUrl === url) {
+                isUrlInList = false;
+            }
             removeElementFromList(listOfPages, url);
             if (isWhitelist()) {
                 setStorage({ whitelist: listOfPages }, updatePopup);

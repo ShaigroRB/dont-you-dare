@@ -1,6 +1,6 @@
 {
     "name": "Don't you dare!",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "description": "Ask for confirmation to close tabs when using Ctrl+W.",
     "permissions": [
         "storage",
